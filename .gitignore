@@ -1,0 +1,100 @@
+# =========================
+# UNITY GENERATED FOLDERS
+# =========================
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+Recordings/
+
+# =========================
+# UNITY CACHE / AUTOGEN
+# =========================
+sysinfo.txt
+*.stacktrace
+
+# Addressables build data
+Assets/AddressableAssetsData/*/*.bin*
+Assets/StreamingAssets/aa.meta
+Assets/StreamingAssets/aa/*
+
+# =========================
+# IDE / EDITOR FILES
+# =========================
+
+# Visual Studio
+.vs/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Rider / JetBrains
+.idea/
+.consulo/
+Assets/Plugins/Editor/JetBrains*
+
+# VS Code
+.vscode/
+
+# =========================
+# OS GENERATED FILES
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# BUILD OUTPUTS
+# =========================
+*.apk
+*.aab
+*.app
+*.exe
+*.ipa
+*.unitypackage
+
+# Crashlytics
+crashlytics-build.properties
+
+# =========================
+# LOGS
+# =========================
+*.log
+
+# =========================
+# UNITY META EXCEPTIONS
+# (Keep .meta files! Do NOT ignore them globally)
+# =========================
+
+# Only ignore broken auto-generated meta
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# =========================
+# OPTIONAL (UNCOMMENT IF NEEDED)
+# =========================
+
+# Asset Store tools (usually safe to ignore)
+# Assets/AssetStoreTools*
+
+# FMOD cache (if you ever use FMOD)
+# Assets/Plugins/FMOD/Cache/
+
+# DOTS / Burst cache
+# Library/BurstCache/
