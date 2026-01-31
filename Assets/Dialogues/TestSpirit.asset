@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestSpirit
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   spiritName: 
-  portrait: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  portrait: {fileID: 1088099970, guid: 68f4f5db8ddea334cb1216c8af00ad12, type: 3}
   dialogueLines:
   - Hello World!!!
   - I am the almighty test spirit,  the first ever entity created by the almighty
