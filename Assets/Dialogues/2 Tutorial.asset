@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 2 Tutorial
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   spiritName: 
-  portrait: {fileID: 1337779132, guid: d2c6c38bbeb8dd645b2bb271fac866f1, type: 3}
+  spiritPortrait: {fileID: 1337779132, guid: d2c6c38bbeb8dd645b2bb271fac866f1, type: 3}
+  playerName: Wade
+  playerPortrait: {fileID: 1088099970, guid: 68f4f5db8ddea334cb1216c8af00ad12, type: 3}
   dialogueLines:
-  - Thank you kind man.
+  - S:Thank you kind man.

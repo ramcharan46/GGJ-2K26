@@ -1,18 +1,18 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI nameText;
-    public UnityEngine.UI.Image portraitImage;
-    
+    public Image portraitImage;
 
-    public float typingSpeed = 0.03f; // Smaller = faster typing
+    public float typingSpeed = 0.03f;
 
-    private string[] lines;
+    private DialogueData currentData;
     private int index;
     public bool IsDialogueActive { get; private set; }
 
@@ -25,24 +25,19 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void StartDialogue(DialogueData data)
-{
-    if (IsDialogueActive) return; // 🚫 Prevent re-triggering
+    {
+        if (IsDialogueActive) return;
+        if (data == null || data.dialogueLines.Length == 0) return;
 
-    if (data == null || data.dialogueLines.Length == 0) return;
+        IsDialogueActive = true;
+        McMovement.canMove = false;
 
-    IsDialogueActive = true;
-    McMovement.canMove = false;
+        currentData = data;
+        index = 0;
 
-    lines = data.dialogueLines;
-    index = 0;
-
-    nameText.text = data.spiritName;
-    portraitImage.sprite = data.portrait;
-
-    dialoguePanel.SetActive(true);
-    StartTyping(lines[index]);
-}
-
+        dialoguePanel.SetActive(true);
+        ShowLine();
+    }
 
     void Update()
     {
@@ -52,9 +47,8 @@ public class DialogueManager : MonoBehaviour
         {
             if (isTyping)
             {
-                // Finish line instantly if still typing
                 StopCoroutine(typingCoroutine);
-                dialogueText.text = lines[index];
+                dialogueText.text = GetLineWithoutPrefix(currentData.dialogueLines[index]);
                 isTyping = false;
             }
             else
@@ -68,9 +62,9 @@ public class DialogueManager : MonoBehaviour
     {
         index++;
 
-        if (index < lines.Length)
+        if (index < currentData.dialogueLines.Length)
         {
-            StartTyping(lines[index]);
+            ShowLine();
         }
         else
         {
@@ -78,9 +72,33 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void StartTyping(string line)
+    void ShowLine()
     {
-        typingCoroutine = StartCoroutine(TypeLine(line));
+        string rawLine = currentData.dialogueLines[index];
+
+        bool isPlayerSpeaking = rawLine.StartsWith("P:");
+        bool isSpiritSpeaking = rawLine.StartsWith("S:");
+
+        if (isPlayerSpeaking)
+        {
+            nameText.text = currentData.playerName;
+            portraitImage.sprite = currentData.playerPortrait;
+        }
+        else if (isSpiritSpeaking)
+        {
+            nameText.text = currentData.spiritName;
+            portraitImage.sprite = currentData.spiritPortrait;
+        }
+
+        string cleanLine = GetLineWithoutPrefix(rawLine);
+        typingCoroutine = StartCoroutine(TypeLine(cleanLine));
+    }
+
+    string GetLineWithoutPrefix(string line)
+    {
+        if (line.Length > 2 && line[1] == ':')
+            return line.Substring(2).Trim();
+        return line;
     }
 
     IEnumerator TypeLine(string line)
@@ -98,15 +116,13 @@ public class DialogueManager : MonoBehaviour
     }
 
     void EndDialogue()
-{
-    dialoguePanel.SetActive(false);
+    {
+        dialoguePanel.SetActive(false);
+        dialogueText.text = "";
+        nameText.text = "";
+        portraitImage.sprite = null;
 
-    dialogueText.text = "";
-    nameText.text = "";
-    portraitImage.sprite = null;
-
-    IsDialogueActive = false; // ✅ Now dialogue can start again
-    McMovement.canMove = true;
-}
-
+        IsDialogueActive = false;
+        McMovement.canMove = true;
+    }
 }
