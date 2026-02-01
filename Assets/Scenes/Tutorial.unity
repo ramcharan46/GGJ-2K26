@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 200001431}
   - component: {fileID: 200001430}
   m_Layer: 0
-  m_Name: Dialogue Manager
+  m_Name: Scene Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
