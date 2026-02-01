@@ -7,7 +7,6 @@ TagManager:
   - spirit
   - FinishPoint
   - Building
-  - EndPoint
   layers:
   - Default
   - TransparentFX

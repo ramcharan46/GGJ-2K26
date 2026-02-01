@@ -1,13 +1,11 @@
 using UnityEngine;
-using TMPro;
 
 public class LilyInteraction : MonoBehaviour
 {
-    private bool playerAtEndPoint = false;
-
     private bool playerInRange = false;
     private bool hasInteracted = false;
     private bool uiShown = false;
+
 
     public DialogueData dialogueData;
     public DialogueData finishDialogue;
@@ -32,7 +30,6 @@ public class LilyInteraction : MonoBehaviour
 
     [Header("UI")]
     public GameObject questUI;
-    public TextMeshProUGUI flowerCountText;   // Assign in Inspector
 
 
     void Update()
@@ -45,7 +42,6 @@ public class LilyInteraction : MonoBehaviour
             hasInteracted = true;
 
             SpawnUI();
-            UpdateFlowerUI();
         }
 
         // Follow player
@@ -59,40 +55,40 @@ public class LilyInteraction : MonoBehaviour
         // Check middle points
         CheckMiddlePoints();
 
-        // Check end point interaction (PLAYER must overlap)
-        if (readyForEnd && playerAtEndPoint)
-            {   
-                if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.IsDialogueActive)
-                {
-                    dialogueManager.StartDialogue(finishDialogue);
-                    CleanupUI();
-                    Destroy(gameObject, 0.2f);
-                }
+        // Check end point
+        if (readyForEnd && IsPlayerAtPoint(endPoint))
+        {
+            if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.IsDialogueActive)
+            {
+                dialogueManager.StartDialogue(finishDialogue);
+                CleanupUI();
+                Destroy(gameObject, 0.2f);
             }
-
-
+        }
         // Hide UI when dialogue ends
-        if (uiShown && !dialogueManager.IsDialogueActive)
-        {
-            questUI.SetActive(false);
-            uiShown = false;
-        }
-    }
+            if (uiShown && !dialogueManager.IsDialogueActive)
+                {
+                    questUI.SetActive(false);
+                    uiShown = false;
+                }
+}
 
-    void SpawnUI()
+   void SpawnUI()
+{
+    if (questUI != null)
     {
-        if (questUI != null)
-        {
-            questUI.SetActive(true);
-            uiShown = true;
-        }
+        questUI.SetActive(true);
+        uiShown = true;
     }
+}
 
-    void CleanupUI()
-    {
-        if (questUI != null)
-            questUI.SetActive(false);
-    }
+
+void CleanupUI()
+{
+    if (questUI != null)
+        questUI.SetActive(false);
+}
+
 
     void CheckMiddlePoints()
     {
@@ -134,40 +130,25 @@ public class LilyInteraction : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other)
-{
-    if (other.CompareTag("Player"))
-        playerInRange = true;
+    {
+        if (other.CompareTag("Player"))
+            playerInRange = true;
+    }
 
-    if (other.CompareTag("EndPoint"))
-        playerAtEndPoint = true;
-}
-
-void OnTriggerExit2D(Collider2D other)
-{
-    if (other.CompareTag("Player"))
-        playerInRange = false;
-
-    if (other.CompareTag("EndPoint"))
-        playerAtEndPoint = false;
-}
-
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+            playerInRange = false;
+    }
 
     public void GiveFlower()
     {
         currentFlowers++;
         Debug.Log("Flowers: " + currentFlowers + "/" + flowersNeeded);
 
-        UpdateFlowerUI();
-
         if (visitedCount >= 3 && currentFlowers >= flowersNeeded)
         {
             readyForEnd = true;
         }
-    }
-
-    void UpdateFlowerUI()
-    {
-        if (flowerCountText != null)
-            flowerCountText.text = currentFlowers + " / " + flowersNeeded;
     }
 }
