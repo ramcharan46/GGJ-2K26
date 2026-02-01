@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 200001431}
   - component: {fileID: 200001430}
+  - component: {fileID: 200001432}
   m_Layer: 0
   m_Name: Scene Manager
   m_TagString: Untagged
@@ -168,6 +169,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &200001432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200001429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8ec1a8d9578d04e8f522e46084f2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LoadSceneButton
+  sceneName: Main Game
 --- !u!1 &200822741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,6 +1354,7 @@ GameObject:
   - component: {fileID: 1519841901}
   - component: {fileID: 1519841900}
   - component: {fileID: 1519841902}
+  - component: {fileID: 1519841903}
   m_Layer: 0
   m_Name: CameraBounds
   m_TagString: Untagged
@@ -1454,6 +1469,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1519841903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519841899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5accabd8466e80647b1f6ad27c276b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneLoadHelper
 --- !u!1 &1520296930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,6 +1494,7 @@ GameObject:
   - component: {fileID: 1520296933}
   - component: {fileID: 1520296931}
   - component: {fileID: 1520296936}
+  - component: {fileID: 1520296937}
   m_Layer: 0
   m_Name: Tutorial Spirit
   m_TagString: spirit
@@ -1628,6 +1656,20 @@ MonoBehaviour:
   followSpeed: 3
   followDistance: 1.5
   finishRadius: 1
+--- !u!114 &1520296937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520296930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8052991467600324ab18e78250b46129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LoadSceneOnDestroy
+  sceneToLoad: Test
+  delay: 2
 --- !u!1 &1540076501
 GameObject:
   m_ObjectHideFlags: 0
@@ -8161,8 +8203,8 @@ Transform:
   m_GameObject: {fileID: 1957146967}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.93, y: 6.6314707, z: 0}
-  m_LocalScale: {x: 7.352254, y: 7.3038025, z: 1}
+  m_LocalPosition: {x: -10.9834, y: 6.6314707, z: 0}
+  m_LocalScale: {x: 7.3971033, y: 7.3038025, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 288399992}

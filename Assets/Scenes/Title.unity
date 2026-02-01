@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8ec1a8d9578d04e8f522e46084f2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneButtonLoader
-  loadingSceneName: Loading
+  sceneName: Tutorial
 --- !u!4 &18397527
 Transform:
   m_ObjectHideFlags: 0
@@ -198,9 +198,9 @@ RectTransform:
   - {fileID: 1788883459}
   m_Father: {fileID: 397112196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 260}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &34619962
@@ -248,8 +248,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 18397526}
-        m_TargetAssemblyTypeName: SceneButtonLoader, Assembly-CSharp
-        m_MethodName: LoadGame
+        m_TargetAssemblyTypeName: LoadSceneButton, Assembly-CSharp
+        m_MethodName: LoadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

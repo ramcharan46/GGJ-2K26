@@ -41,6 +41,7 @@ public class SpiritInteraction : MonoBehaviour
         {
             dialogueManager.StartDialogue(finishDialogue);
             Destroy(gameObject, 0.2f);
+            
         }
     }
 

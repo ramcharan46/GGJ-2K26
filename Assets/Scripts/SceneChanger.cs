@@ -1,12 +1,11 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class SceneButtonLoader : MonoBehaviour
+public class LoadSceneButton : MonoBehaviour
 {
-    public string loadingSceneName = "LoadingScene";
+    public string sceneName;
 
-    public void LoadGame()
+    public void LoadScene()
     {
-        SceneManager.LoadScene(loadingSceneName);
+        SceneLoader.LoadScene(sceneName);
     }
 }
